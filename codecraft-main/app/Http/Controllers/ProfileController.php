@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -45,16 +46,23 @@ class ProfileController extends Controller
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
-
+    
         $user = $request->user();
-
+        $imageLink = $user->imagelink;  // Get the image link from the user's record
+    
+        // Delete the image from storage if it exists
+        if ($imageLink) {
+            // Remove the '/storage/' part from the URL to get the correct path
+            $imagePath = str_replace('/storage/', '', $imageLink);
+            Storage::disk('public')->delete($imagePath);
+        }
+    
         Auth::logout();
-
         $user->delete();
-
+    
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
+    
         return Redirect::to('/');
     }
 }

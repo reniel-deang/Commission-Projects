@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('registerteacher') }}" enctype="multipart/form-data">
         @csrf
 
         <!-- Name -->
@@ -23,11 +23,34 @@
         </div>
 
         <div class="mt-4">
+            <x-input-label for="number" :value="__('Number')" />
+            <x-text-input 
+                id="number" 
+                class="block mt-1 w-full" 
+                type="number" 
+                name="number" 
+                :value="old('number')" 
+                required 
+                autocomplete="number"
+                pattern="^(09|\+639)\d{9}$"
+                title="Please enter a valid Philippine phone number, e.g., 09123456789 or +639123456789."
+                inputmode="numeric"
+            />
+            <x-input-error :messages="$errors->get('number')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
             <x-input-label for="usertype" :value="__('User Type')" />
             <select id="usertype" class="block mt-1 w-full" name="usertype" :value="old('usertype')" required autocomplete="usertype" >
-                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
               </select>
             <x-input-error :messages="$errors->get('usertype')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="image" :value="__('Teaching License/Job ID Verification')" />
+            <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('validid')" required autocomplete="image" />
+            <x-input-error :messages="$errors->get('image')" class="mt-2" />
         </div>
 
         <!-- Password -->

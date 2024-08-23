@@ -19,7 +19,17 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('usertype')->nullable();
+            $table->string('phonenumber')->nullable();
+            $table->string('verification')->nullable();
+            $table->string('imagelink')->nullable();
+            $table->string('interest')->nullable();
             $table->rememberToken();
+            $table->timestamps();
+        });
+
+        Schema::create('validid', function (Blueprint $table) {
+            $table->id();
+            $table->string('image');
             $table->timestamps();
         });
 
@@ -27,6 +37,7 @@ return new class extends Migration
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
+            $table->string('userid');
         });
 
         Schema::create('sessions', function (Blueprint $table) {

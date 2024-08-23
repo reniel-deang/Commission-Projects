@@ -65,8 +65,8 @@
         <br>
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item menu-open">
-              <a href="" class="nav-link active">
+            <li class="nav-item ">
+              <a href="{{route('admin.dashboard')}}" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
@@ -74,8 +74,8 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="{{route('manageteacher')}}" class="nav-link">
+            <li class="nav-item menu-open">
+              <a href="{{route('manageteacher')}}" class="nav-link active">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
                   Manage Teacher
@@ -164,83 +164,136 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Admin Dashboard</h1>
+              <h1 class="m-0">Manage Teachers Applications</h1>
             </div>
           </div>
         </div>
       </div>
 
       <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-3 col-6">
-              <div class="small-box bg-success">
-                <div class="inner">
-                  <h3>
-                   {{$display['verifiedteacher']}}
-                  </h3>
-                  <p>Verified Teachers</p>
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <div class="container mt-3">
+                <h2>Unverified Teachers</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>ID/Licence</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($unverifiedTeacher as $user)
+                            <tr>
+                                <td>{{ $user->firstname }} {{ $user->lastname }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->phonenumber }}</td>
+                                <td>
+                                    <!-- Button to trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal{{ $user->id }}">
+                                       View
+                                    </button>
+                        
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modal{{ $user->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $user->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalLabel{{ $user->id }}">ID/License</h5>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <img src="{{ $user->imagelink }}" alt="ID/License Image" class="img-fluid">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    <!-- Accept Button -->
+                                    <form action="{{ route('teacher.accept', $user->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success">Accept</button>
+                                    </form>
+    
+                                    <!-- Reject Button -->
+                                    <form action="{{ route('teacher.reject', $user->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger">Reject</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        
+                    </table>
                 </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-              
-              </div>
             </div>
-
-            <div class="col-lg-3 col-6">
-              <div class="small-box bg-danger">
-                <div class="inner">
-                  <h3>
-                    {{$display['unverifiedteacher']}}
-                  </h3>
-                  <p>Unverified Teachers</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                
-              </div>
-            </div>   
-
-            <div class="col-lg-3 col-6">
-              <div class="small-box bg-primary">
-                <div class="inner">
-                  <h3>
-                    {{$display['studentcount']}}
-                  </h3>
-                  <p>Students</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                
-              </div>
-            </div>   
-          </div>
-
         </div>
+    </section>
+    
 
-        <div class="row">
-          <section class="col-lg-7 connectedSortable">
-            <!-- Bar chart -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Verified Teachers Per Month</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
+      <section class="content">
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <div class="container mt-3">
+                <h2>Verified Teachers</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>ID/Licence</th>
+                                <th>Date Joined</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($verifiedTeacher as $user)
+                            <tr>
+                                <td>{{ $user->firstname }} {{ $user->lastname }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->phonenumber }}</td>
+                                <td>
+                                    <!-- Button to trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal{{ $user->id }}">
+                                       View
+                                    </button>
+                        
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modal{{ $user->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $user->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalLabel{{ $user->id }}">ID/License</h5>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <img src="{{ $user->imagelink }}" alt="ID/License Image" class="img-fluid">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    {{ $user->created_at }}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        
+                    </table>
                 </div>
-              </div>
-              <div class="card-body">
-                <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-              </div>
             </div>
-          </section>
         </div>
       </section>
     </div>
@@ -262,30 +315,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="{{asset('admin-template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
-
-  <script>
-    $(function () {
-      var ctx = document.getElementById('barChart').getContext('2d');
-      var barChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: [@foreach ($months as $month => $value) "{{$month}}", @endforeach],
-          datasets: [{
-            label: 'Parking Tickets Data',
-            backgroundColor: 'rgba(60,141,188,0.9)',
-            borderColor: 'rgba(60,141,188,0.8)',
-            data: [@foreach ($months as $month) {{$month}}, @endforeach]
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          datasetFill: false
-        }
-      });
-    });
-
-  </script>
 
 </body>
 </html>

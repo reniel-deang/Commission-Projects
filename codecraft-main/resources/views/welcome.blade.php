@@ -85,7 +85,7 @@ https://templatemo.com/tm-579-cyborg-gaming
 
                         @guest
                             <ul class="nav">
-                                <li><a href="{{ route('register') }}">Become a Teacher</a></li>
+                                <li><a href="{{ route('becometeacher') }}">Become a Teacher</a></li>
                                 <li><a href="{{ route('register') }}">Register</a></li>
                                 <li><a href="{{ route('login') }}">Login</a></li>
 
