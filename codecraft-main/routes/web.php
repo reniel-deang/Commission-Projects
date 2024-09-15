@@ -6,7 +6,7 @@ use App\Http\Controllers\Userdashboard;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('mainpage');
 })->name('homepage');
 
 // Route::get('/dashboard', function () {

@@ -125,127 +125,23 @@ https://templatemo.com/tm-579-cyborg-gaming
                     <!-- ***** Banner End ***** -->
 
                     <!-- ***** Most Popular Start ***** -->
-                    <div class="most-popular">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="heading-section">
-                                    <h5>Learn programming for academic journey with our trusted instructors</h5>
-                                    <br>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-sm-6">
-                                        <div class="item">
-                                            <img src="{{ asset('mainsite-template/assets/images/popular-01.jpg') }}"
-                                                alt="">
-                                            <h4>Alyxsis Salac<br><span>BSIT</span></h4>
-                                            <ul>
-                                                <li><i class="fa fa-star"></i> 4.8</li>
-                                                <li><i class="fa fa-download"></i> 2.3M</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6">
-                                        <div class="item">
-                                            <img src="{{ asset('mainsite-template/assets/images/popular-02.jpg') }}"
-                                                alt="">
-                                            <h4>Charmaine Cacho<br><span>BSIT</span></h4>
-                                            <ul>
-                                                <li><i class="fa fa-star"></i> 4.8</li>
-                                                <li><i class="fa fa-download"></i> 2.3M</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6">
-                                        <div class="item">
-                                            <img src="{{ asset('mainsite-template/assets/images/popular-03.jpg') }}"
-                                                alt="">
-                                            <h4>John Doe<br><span>CpE</span></h4>
-                                            <ul>
-                                                <li><i class="fa fa-star"></i> 4.8</li>
-                                                <li><i class="fa fa-download"></i> 2.3M</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6">
-                                        <div class="item">
-                                            <img src="{{ asset('mainsite-template/assets/images/popular-04.jpg') }}"
-                                                alt="">
-                                            <h4>Joselito Mandap<br><span>MSCpE</span></h4>
-                                            <ul>
-                                                <li><i class="fa fa-star"></i> 4.8</li>
-                                                <li><i class="fa fa-download"></i> 2.3M</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="main-button">
-                                            <a href="">Discover More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <!-- ***** Most Popular End ***** -->
 
                     <!-- ***** Gaming Library Start ***** -->
-                    <div class="gaming-library">
-                        <div class="col-lg-12">
-                            <div class="heading-section">
-                                <h4><em>Explore</em> Different Fields</h4>
-                            </div>
-                            <div class="item">
-                                <ul>
-                                    <li><img src="{{ asset('mainsite-template/assets/images/game-01.jpg') }}"
-                                            alt="" class="templatemo-item"></li>
-                                    <li>
-                                        <h4>Python</h4>
-                                    </li>
-                                    <li>
-                                      <h4><span><span>Programming Language</span></span></h4>
-                                    </li>
-                                    <li><div class="main-border-button"><a href="#">Learn More</a></div></li>
-                                </ul>
-                            </div>
-                            <div class="item">
-                                <ul>
-                                    <li><img src="{{ asset('mainsite-template/assets/images/game-02.jpg') }}"
-                                            alt="" class="templatemo-item"></li>
-                                    <li>
-                                        <h4>PHP</h4>
-                                    </li>
-                                    <li>
-                                      <h4><span>Backend Programming Language</span></h4>
-                                    </li>
-                                    <li><div class="main-border-button"><a href="#">Learn More</a></div></li>
-                                </ul>
-                            </div>
-                            <div class="item last-item">
-                                <ul>
-                                    <li><img src="{{ asset('mainsite-template/assets/images/game-03.jpg') }}"
-                                            alt="" class="templatemo-item"></li>
-                                    <li>
-                                        <h4>Ruby On Rails</h4>
-                                    </li>
-                                    <li>
-                                        <h4><span>Backend Programming Language</span></h4>
-                                    </li>
-
-                                    
-                                    <li><div class="main-border-button"><a href="#">Learn More</a></div></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="main-button">
-                                <a href="profile.html">View All</a>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <!-- ***** Gaming Library End ***** -->
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="container">
+       <div class="row">
+        <div class="col-lg-12">
+            <div class="page-content"></div>
+        </div>
+       </div>
     </div>
 
     <footer>
